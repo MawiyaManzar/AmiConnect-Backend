@@ -1,0 +1,13 @@
+Flask
+flask-cors
+psycopg2-binary
+bcrypt
+python-dotenv
+PyJWT
+werkzeug
+python-jose
+passlib
+pandas
+numpy
+scikit-learn
+gunicorn
