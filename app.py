@@ -16,7 +16,17 @@ DB_URL = os.getenv('DATABASE_URL')
 SECRET_KEY = os.getenv('SECRET_KEY')
 app = Flask(__name__)
 app.config['ENV'] = os.getenv('FLASK_ENV', 'production')
-CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+CORS(app, resources={
+    r"/*": {
+        "origins": ["http://localhost:4173"],
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
+        "expose_headers": ["Content-Type", "Authorization"],
+        "supports_credentials": True,
+        "max_age": 3600
+    }
+})
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(users_bp)
@@ -29,5 +39,5 @@ def index():
     return {'status': 'AmiConnect backend running'}
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 8000))
     app.run(host='0.0.0.0', port=port, debug=True)
