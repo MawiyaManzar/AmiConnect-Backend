@@ -19,7 +19,7 @@ app.config['ENV'] = os.getenv('FLASK_ENV', 'production')
 app.config['CORS_HEADERS'] = 'Content-Type'
 CORS(app, resources={
     r"/*": {
-        "origins": ["http://localhost:4173"],
+        "origins": ["*"],
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
         "expose_headers": ["Content-Type", "Authorization"],
