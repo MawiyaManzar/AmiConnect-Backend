@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(120) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     gender VARCHAR(10) CHECK (gender IN ('Male', 'Female')),
-    department VARCHAR(20) CHECK (department IN ('BTech', 'BCA', 'MCA','BBA')),
-    year INTEGER CHECK (year >= 1 AND year <= 6),
-    connection_type VARCHAR(30) CHECK (connection_type IN ('Study Partner', 'Project Collaboration', 'General', 'Friendship')),
+    department VARCHAR(20) NOT NULL CHECK (department IN ('BTech', 'BCA', 'MCA','BBA')),
+    year INTEGER NOT NULL CHECK (year >= 1 AND year <= 6),
+    connection_type VARCHAR(30)NOT NULL CHECK (connection_type IN ('Study Partner', 'Project Collaboration', 'General', 'Friendship')),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
